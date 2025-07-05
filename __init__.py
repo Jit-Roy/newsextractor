@@ -30,20 +30,33 @@ __email__ = "your.email@example.com"
 # Import core components
 try:
     from .core.news_extractor import NewsExtractor
-    from .core.trending import NewsSearcher
-    from .core.translator import Translator
     from .models.article import Article
     from .utils.validators import URLValidator
     from .utils.helpers import TextProcessor
+    
+    # Try to import optional components
+    try:
+        from .core.trending import NewsSearcher
+    except ImportError:
+        NewsSearcher = None
+        
+    try:
+        from .core.translator import Translator
+    except ImportError:
+        Translator = None
 
     __all__ = [
         "NewsExtractor",
-        "NewsSearcher",
-        "Translator",
-        "Article",
+        "Article", 
         "URLValidator",
         "TextProcessor",
     ]
+    
+    if NewsSearcher:
+        __all__.append("NewsSearcher")
+    if Translator:
+        __all__.append("Translator")
+        
 except ImportError as e:
     # Fallback for development/testing
     import warnings
