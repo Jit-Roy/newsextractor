@@ -243,14 +243,6 @@ for url in urls:
     article = extractor.extract_from_url(url)
     time.sleep(1)  # Add delay between requests
 ```
-
-## 📚 Next Steps
-
-1. **Explore Advanced Features** - Try different NLP models and extraction methods
-2. **Build Your Application** - Integrate into your news aggregation or analysis project
-3. **Scale Up** - Use concurrent processing for large-scale extraction
-4. **Customize** - Add domain-specific content selectors or custom NLP pipelines
-
 ---
 
 ## 📞 Support
