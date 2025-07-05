@@ -13,10 +13,10 @@ from .trending import NewsSearcher, NewsSearchResult
 TrendingTopics = NewsSearcher
 
 __all__ = [
-    'NewsExtractor',
-    'Translator', 
-    'TranslationProvider',
-    'NewsSearcher',
-    'NewsSearchResult',
-    'TrendingTopics'  # For backward compatibility
+    "NewsExtractor",
+    "Translator",
+    "TranslationProvider",
+    "NewsSearcher",
+    "NewsSearchResult",
+    "TrendingTopics",  # For backward compatibility
 ]

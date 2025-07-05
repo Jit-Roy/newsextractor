@@ -17,7 +17,9 @@ except FileNotFoundError:
 requirements_path = os.path.join(os.path.dirname(__file__), "requirements.txt")
 try:
     with open(requirements_path, "r", encoding="utf-8") as fh:
-        requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
+        requirements = [
+            line.strip() for line in fh if line.strip() and not line.startswith("#")
+        ]
 except FileNotFoundError:
     requirements = ["requests>=2.28.0", "beautifulsoup4>=4.11.0", "lxml>=4.9.0"]
 
