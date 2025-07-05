@@ -1,0 +1,15 @@
+include QUICK_START.md
+include requirements.txt
+include pyproject.toml
+include setup.py
+include __init__.py
+
+recursive-include core *.py
+recursive-include models *.py
+recursive-include utils *.py
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
+recursive-exclude * *.egg-info
+exclude .gitignore
+exclude *.ipynb

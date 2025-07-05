@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "newsextractor"
+version = "1.0.0"
+description = "Professional news extraction library with multi-language support"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [
+    {name = "Jit Roy", email = "your.email@example.com"}
+]
+keywords = ["news", "extraction", "scraping", "nlp", "translation", "trending", "rss"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary",
+    "Topic :: Text Processing :: Linguistic",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests>=2.25.0",
+    "beautifulsoup4>=4.9.0",
+    "lxml>=4.6.0",
+    "feedparser>=6.0.0",
+    "python-dateutil>=2.8.0",
+    "pytrends>=4.9.0",
+    "serpapi>=0.1.0",
+    "newsapi-python>=0.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=21.0",
+    "flake8>=3.8",
+    "mypy>=0.800",
+    "pre-commit>=2.0",
+]
+redis = ["redis>=4.0.0"]
+async = ["aiohttp>=3.8.0", "aiofiles>=0.8.0"]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/newsextractor"
+Repository = "https://github.com/yourusername/newsextractor"
+Documentation = "https://newsextractor.readthedocs.io/"
+"Bug Reports" = "https://github.com/yourusername/newsextractor/issues"
+
+[project.scripts]
+newsextractor = "main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["*"]
+exclude = ["tests*", "*.tests*", "*.tests"]
+
+[tool.black]
+line-length = 88
+target-version = ['py37']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "--cov=newsextractor --cov-report=html --cov-report=term-missing"
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

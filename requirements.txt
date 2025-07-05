@@ -1,0 +1,21 @@
+# Core dependencies for news extraction
+requests>=2.28.0
+beautifulsoup4>=4.11.0
+lxml>=4.9.0
+python-dateutil>=2.8.0
+python-dotenv>=0.19.0
+
+# Translation support - Uses Google Translate Free API (no additional dependencies)
+
+# AI/NLP for smart summarization (optional)
+spacy>=3.4.0               # For AI-powered keyword extraction and summarization
+
+# RSS feed parsing
+feedparser>=6.0.0          # For RSS/Atom feed parsing
+
+# Development dependencies (optional)
+pytest>=7.1.0
+pytest-cov>=3.0.0
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.971
