@@ -60,12 +60,6 @@ setup(
         "ai": ["spacy>=3.4.0"],  # For AI-powered summarization
         "async": ["aiohttp>=3.8.0", "aiofiles>=0.8.0"],
     },
-    # Remove entry points since we don't have a main.py console script
-    # entry_points={
-    #     "console_scripts": [
-    #         "newsextractor=main:main",
-    #     ],
-    # },
     keywords="news extraction scraping nlp translation trending rss",
     project_urls={
         "Bug Reports": "https://github.com/yourusername/newsextractor/issues",
