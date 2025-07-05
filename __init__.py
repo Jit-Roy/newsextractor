@@ -24,8 +24,9 @@ Quick Start:
 """
 
 __version__ = "1.0.0"
-__author__ = "Your Name"
-__email__ = "your.email@example.com"
+__author__ = "Jit Roy"
+__email__ = "team@newsextractor.com"
+__description__ = "Professional news article extraction with advanced NLP"
 
 # Import core components
 try:
@@ -35,25 +36,40 @@ try:
     from .utils.helpers import TextProcessor
 
     # Try to import optional components
+    NewsSearcher = None
+    Translator = None
+    TrendingTopics = None
+
     try:
         from .core.trending import NewsSearcher
+
+        # Create backward compatibility alias
+        TrendingTopics = NewsSearcher
     except ImportError:
-        NewsSearcher = None
+        pass
 
     try:
         from .core.translator import Translator
     except ImportError:
-        Translator = None
+        pass
 
+    # Define what's available for import
     __all__ = [
         "NewsExtractor",
         "Article",
         "URLValidator",
         "TextProcessor",
+        "extract_article",
+        "extract_keywords",
+        "__version__",
+        "__author__",
+        "__email__",
+        "__description__",
     ]
 
+    # Add optional components if available
     if NewsSearcher:
-        __all__.append("NewsSearcher")
+        __all__.extend(["NewsSearcher", "TrendingTopics"])
     if Translator:
         __all__.append("Translator")
 
@@ -63,37 +79,12 @@ except ImportError as e:
 
     warnings.warn(f"Could not import all modules: {e}")
 
-    __all__ = []
-TrendingTopics = NewsSearcher
-
-__version__ = "1.0.0"
-__author__ = "NewsExtractor Team"
-__email__ = "team@newsextractor.com"
-__description__ = "Professional news article extraction with advanced NLP"
-
-__all__ = [
-    # Main classes
-    "NewsExtractor",
-    "Article",
-    # Support classes
-    "Translator",
-    "NewsSearcher",
-    "TrendingTopics",  # Backward compatibility
-    "URLValidator",
-    "TextProcessor",
-    # Convenience functions
-    "extract_article",
-    "extract_keywords",
-    # Package info
-    "__version__",
-    "__author__",
-    "__email__",
-    "__description__",
-]
+    # Minimal fallback
+    __all__ = ["__version__", "__author__", "__email__", "__description__"]
 
 
 # Quick access functions for convenience
-def extract_article(url: str, enable_nlp: bool = True) -> Article:
+def extract_article(url: str, enable_nlp: bool = True):
     """
     Quick article extraction function for simple use cases
 
@@ -112,7 +103,7 @@ def extract_article(url: str, enable_nlp: bool = True) -> Article:
     return extractor.extract_from_url(url)
 
 
-def extract_keywords(text: str, max_keywords: int = 10) -> list:
+def extract_keywords(text: str, max_keywords: int = 10):
     """
     Quick keyword extraction from text
 

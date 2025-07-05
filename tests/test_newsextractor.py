@@ -9,14 +9,16 @@ import os
 # Add the parent directory to the path so we can import the modules
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Import from main package instead of direct modules
+# Import the main module components directly
 try:
+    # Import the main __init__.py from the root directory
+    import __init__ as newsextractor_main
     from core.news_extractor import NewsExtractor
     from models.article import Article
     from utils.validators import URLValidator
-except ImportError:
+except ImportError as e:
     # Skip tests if modules cannot be imported
-    pytest.skip("Modules not available for testing", allow_module_level=True)
+    pytest.skip(f"Modules not available for testing: {e}", allow_module_level=True)
 
 
 class TestNewsExtractor:
