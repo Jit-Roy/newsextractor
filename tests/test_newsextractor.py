@@ -45,7 +45,9 @@ class TestNewsExtractor:
             extractor = NewsExtractor(language="es")
             assert extractor is not None
         except Exception:
-            pytest.skip("NewsExtractor with custom language failed - missing dependencies")
+            pytest.skip(
+                "NewsExtractor with custom language failed - missing dependencies"
+            )
 
 
 class TestArticleModel:

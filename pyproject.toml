@@ -48,10 +48,10 @@ redis = ["redis>=4.0.0"]
 async = ["aiohttp>=3.8.0", "aiofiles>=0.8.0"]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/newsextractor"
-Repository = "https://github.com/yourusername/newsextractor"
+Homepage = "https://github.com/jitroy/newsextractor"
+Repository = "https://github.com/jitroy/newsextractor"
 Documentation = "https://newsextractor.readthedocs.io/"
-"Bug Reports" = "https://github.com/yourusername/newsextractor/issues"
+"Bug Reports" = "https://github.com/jitroy/newsextractor/issues"
 
 [project.scripts]
 newsextractor = "main:main"
@@ -63,7 +63,7 @@ exclude = ["tests*", "*.tests*", "*.tests"]
 
 [tool.black]
 line-length = 88
-target-version = ['py37']
+target-version = ['py313']
 include = '\.pyi?$'
 extend-exclude = '''
 /(
@@ -87,7 +87,8 @@ python_functions = ["test_*"]
 addopts = "--cov=newsextractor --cov-report=html --cov-report=term-missing"
 
 [tool.mypy]
-python_version = "3.7"
+python_version = "3.13"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
+ignore_missing_imports = true

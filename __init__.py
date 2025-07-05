@@ -33,13 +33,13 @@ try:
     from .models.article import Article
     from .utils.validators import URLValidator
     from .utils.helpers import TextProcessor
-    
+
     # Try to import optional components
     try:
         from .core.trending import NewsSearcher
     except ImportError:
         NewsSearcher = None
-        
+
     try:
         from .core.translator import Translator
     except ImportError:
@@ -47,16 +47,16 @@ try:
 
     __all__ = [
         "NewsExtractor",
-        "Article", 
+        "Article",
         "URLValidator",
         "TextProcessor",
     ]
-    
+
     if NewsSearcher:
         __all__.append("NewsSearcher")
     if Translator:
         __all__.append("Translator")
-        
+
 except ImportError as e:
     # Fallback for development/testing
     import warnings
